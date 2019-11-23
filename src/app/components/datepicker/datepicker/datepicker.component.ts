@@ -36,46 +36,28 @@ export class DatepickerComponent implements OnInit {
     const date = moment(this.current, 'MMMM');
     const startOfMonth = moment(date.startOf('month'));
     const endOfMonth = moment(date.endOf('month'));
+    const currentMonth = endOfMonth.format('M');
     const day = startOfMonth;
 
-    // TODO Refactor: add already the earlier days
+    // Check if startOfMonth's weekday starts on 0, if not, update it to the first
+    // earlier date which starts with 0
+    const startOfMonthWeekday = parseInt(startOfMonth.format('d'), 10);
+    Array.from(Array(startOfMonthWeekday).keys())
+      .map(() => startOfMonth.subtract(1, 'day'));
+
+    // Same with endOfMonth ending on a 6
+    const endOfMonthWeekday = parseInt(endOfMonth.format('d'), 10);
+    Array.from(Array(6 - endOfMonthWeekday).keys())
+      .map(() => endOfMonth.add(1, 'day'));
+
     while (startOfMonth <= endOfMonth) {
       const obj: IDay = {
         day: day.format(),
         weekday: parseInt(day.format('d'), 10),
-        disabled: false,
+        disabled: !(currentMonth === day.format('M'))
       };
       days.push(obj);
       day.add(1, 'day');
-    }
-
-    // TODO Refactor
-    // If the first day do not start on a Sunday, we should add the days before to fill the datepicker
-    if (days[0].weekday) {
-      const firstday = days[0];
-      const formatted = moment(firstday.day);
-      // tslint:disable-next-line:radix
-      Array.from(Array(firstday.weekday).keys(), () => {
-        formatted.subtract(1, 'day');
-        return {
-          day: formatted.format(),
-          weekday: parseInt(formatted.format('d'), 10),
-          disabled: true,
-        };
-      }).map(item => days.unshift(item));
-    }
-
-    if (days[days.length - 1].weekday !== 6) {
-      const lastday = days[days.length - 1];
-      const formatted = moment(lastday.day);
-      Array.from(Array(6 - lastday.weekday).keys(), () => {
-        formatted.add(1, 'day');
-        return {
-          day: formatted.format(),
-          weekday: parseInt(formatted.format('d'), 10),
-          disabled: true,
-        };
-      }).map(item => days.push(item));
     }
 
     this.matchDays(days);
