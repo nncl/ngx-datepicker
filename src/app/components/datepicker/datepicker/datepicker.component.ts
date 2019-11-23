@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { IDay } from '../../../interfaces/day/day';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-datepicker',
@@ -11,7 +12,7 @@ export class DatepickerComponent implements OnInit {
   weeks: any[] = Array.from(Array(7).keys(), n => {
     return {weekday: n, days: []};
   });
-  current: any;
+  current: Moment;
   previous: any;
   next: any;
 
@@ -22,8 +23,7 @@ export class DatepickerComponent implements OnInit {
   updatePrevNext() {
     const date = moment(this.current.format());
     this.previous = date.subtract(1, 'month').format('MMMM');
-    this.current = date.add(1, 'month').format('MMMM');
-    this.next = date.add(1, 'month').format('MMMM');
+    this.next = date.add(2, 'month').format('MMMM');
     this.buildMonth();
   }
 
