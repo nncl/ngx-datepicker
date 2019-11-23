@@ -1,0 +1,126 @@
+@import "~src/scss/base/variables";
+@import "~src/scss/base/functions";
+
+.assertive,
+.disabled {
+  pointer-events: none;
+}
+
+.assertive {
+  color: $color-assertive-main;
+  pointer-events: none;
+}
+
+.disabled {
+  opacity: .5;
+}
+
+.selected {
+  position: relative;
+  color: $color-light-main;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calculateRem(24px);
+    height: calculateRem(24px);
+    background-color: $color-positive;
+    z-index: -1;
+    border-radius: 50%;
+  }
+}
+
+.datepicker {
+  display: inline-block;
+  min-width: calculateRem(328px);
+
+  @media screen and (min-width: 396px) {
+    min-width: calculateRem(396px);
+  }
+
+  &__close,
+  &__footer {
+    @media screen and (min-width: $size-mobile + 1) {
+      display: none;
+    }
+  }
+
+  &__close {
+    font-weight: 600;
+    font-size: calculateRem(14px);
+    line-height: calculateRem(15px);
+    margin-bottom: calculateRem(15px);
+    text-align: right;
+    color: $color-dark;
+  }
+
+  &__header,
+  &__weeks {
+    display: flex;
+  }
+
+  &__header,
+  &__weeks {
+    justify-content: space-between;
+  }
+
+  &__header button {
+    font-size: calculateRem(16px);
+    line-height: calculateRem(17px);
+    color: $color-dark-light;
+  }
+
+  &__content {
+    border: calculateRem(1px) solid $color-light-light;
+    border-radius: calculateRem(32px);
+    padding: calculateRem(13px) calculateRem(16px) calculateRem(16px);
+
+    @media screen and (min-width: $size-mobile + 1) {
+      padding: calculateRem(21px) calculateRem(16px) calculateRem(2px);
+      border-radius: calculateRem(16px);
+    }
+  }
+
+  &__weeks {
+    margin: calculateRem(18px) 0 calculateRem(25px);
+
+    @media screen and (min-width: $size-mobile + 1) {
+      margin-top: calculateRem(18px);
+    }
+  }
+
+  &__week strong {
+    display: block;
+    margin-bottom: calculateRem(15px);
+
+    @media screen and (min-width: $size-mobile + 1) {
+      margin-bottom: calculateRem(22px);
+    }
+  }
+
+  &__days {
+    font-size: calculateRem(12px);
+    line-height: calculateRem(13px);
+    text-align: center;
+    color: $color-dark-smoked;
+
+    li {
+      cursor: pointer;
+    }
+
+    li:not(:last-child) {
+      margin-bottom: calculateRem(19px);
+
+      @media screen and (min-width: $size-mobile + 1) {
+        margin-bottom: calculateRem(28px);
+      }
+    }
+  }
+
+  &__footer app-button {
+    text-transform: uppercase;
+  }
+}

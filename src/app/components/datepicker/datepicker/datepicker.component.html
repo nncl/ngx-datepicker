@@ -1,0 +1,36 @@
+<div class="datepicker">
+  <div class="datepicker__close">
+    <button type="button">Fechar</button>
+  </div>
+
+  <div class="datepicker__content">
+    <header class="datepicker__header">
+      <button type="button" class="previous" (click)="toggle(false)">
+        {{previous}}
+      </button>
+
+      <strong class="current">
+        {{current}}
+      </strong>
+
+      <button type="button" class="next" (click)="toggle(true)">
+        {{next}}
+      </button>
+    </header>
+
+    <div class="datepicker__weeks">
+      <div class="datepicker__week" *ngFor="let week of weeks">
+        <strong>{{week.weekday | weekday}}</strong>
+        <ul class="datepicker__days">
+          <li *ngFor="let date of week.days" [ngClass]="{'disabled' : date.disabled}">
+            {{date.day | date : 'd'}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="datepicker__footer">
+      <button>Selecionar</button>
+    </footer>
+  </div>
+</div>

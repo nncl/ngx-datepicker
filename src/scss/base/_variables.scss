@@ -1,0 +1,85 @@
+// Colors - DO NOT USE THIS
+$color-blue-soft: #D4E9F5;
+$color-blue-light: #00D2FF;
+$color-blue-stable: #00B7FF;
+$color-blue-main: #0026E2;
+$color-blue: #1F65FF;
+$color-blue-dark: #150578;
+
+$color-grey-light: #E4E9F0;
+$color-grey-stable: #D7DFEA;
+$color-grey-main: #FFFFFF;
+$color-grey: #F4F6F8;
+$color-grey-smoked: #F9F9F9;
+
+$color-black-light: #B0B7C8;
+$color-black-stable: #5E6678;
+$color-black-main: #494F5E;
+$color-black: #22242F;
+$color-black-smoked: #828CA3;
+
+$color-purple-light: #8A91F2;
+$color-purple: #6E00DC;
+$color-purple-dark: #5200A4;
+
+$color-red: #F12C2C;
+
+$color-pink: #FF007F;
+$color-pink-dark: #D6006A;
+
+$color-orange: #FC440F;
+$color-orange-dark: #FF715B;
+
+$color-green-light: #1EFFBC;
+$color-green: #00D87D;
+$color-green-dark: #1E9D60;
+
+$color-yellow-light: #F5F9C0;
+$color-yellow: #F4FF52;
+$color-yellow-dark: #FFD600;
+
+// Colors variables - USE THIS INSTEAD
+$color-positive-soft: $color-blue-soft;
+$color-positive-light: $color-blue-light;
+$color-positive-stable: $color-blue-stable;
+$color-positive-main: $color-blue-main;
+$color-positive: $color-blue;
+$color-positive-dark: $color-blue-dark;
+
+$color-light-light: $color-grey-light;
+$color-light-stable: $color-grey-stable;
+$color-light-main: $color-grey-main;
+$color-light: $color-grey;
+$color-light-smoked: $color-grey-smoked;
+
+$color-dark-light: $color-black-light;
+$color-dark-stable: $color-black-stable;
+$color-dark-main: $color-black-main;
+$color-dark: $color-black;
+$color-dark-smoked: $color-black-smoked;
+
+$color-royal-light: $color-purple-light;
+$color-royal: $color-purple;
+$color-royal-dark: $color-purple-dark;
+
+$color-assertive-light: $color-pink;
+$color-assertive-smoked: $color-orange;
+$color-assertive: $color-orange-dark;
+$color-assertive-main: $color-red;
+$color-assertive-dark: $color-pink-dark;
+
+$color-balanced-light: $color-green-light;
+$color-balanced: $color-green;
+$color-balanced-dark: $color-green-dark;
+
+$color-energized-light: $color-yellow-light;
+$color-energized: $color-yellow;
+$color-energized-dark: $color-yellow-dark;
+
+// Size
+$size-mobile-min: 320px;
+$size-mobile: 375px;
+
+// Fonts
+$font-open-sans: 'Open Sans', sans-serif;
+$font-zona-pro: zonapro, sans-serif;
