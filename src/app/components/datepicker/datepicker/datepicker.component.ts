@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
 import { IDay } from '../../../interfaces/day/day';
 import { Moment } from 'moment';
@@ -9,6 +9,7 @@ import { Moment } from 'moment';
   styleUrls: ['./datepicker.component.scss']
 })
 export class DatepickerComponent implements OnInit {
+  @Output() dateClicked = new EventEmitter<string>();
   weeks: any[] = Array.from(Array(7).keys(), n => {
     return {weekday: n, days: []};
   });

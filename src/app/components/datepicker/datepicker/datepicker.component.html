@@ -22,7 +22,9 @@
       <div class="datepicker__week" *ngFor="let week of weeks">
         <strong>{{week.weekday | weekday}}</strong>
         <ul class="datepicker__days">
-          <li *ngFor="let date of week.days" [ngClass]="{'disabled' : date.disabled}">
+          <li *ngFor="let date of week.days"
+              [ngClass]="{'disabled' : date.disabled}"
+              (click)="dateClicked.emit(date.day)">
             {{date.day | date : 'd'}}
           </li>
         </ul>
