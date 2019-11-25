@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngxdatepicker": [
+        "dist/ngxdatepicker"
+      ],
+      "ngxdatepicker/*": [
+        "dist/ngxdatepicker/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

@@ -1,0 +1,26 @@
+// Colors - DO NOT USE THIS
+$color-blue: #1F65FF;
+
+$color-grey-light: #E4E9F0;
+$color-grey-main: #FFFFFF;
+
+$color-black-light: #B0B7C8;
+$color-black: #22242F;
+$color-black-smoked: #828CA3;
+
+$color-red: #F12C2C;
+
+// Colors variables - USE THIS INSTEAD
+$color-positive: $color-blue;
+
+$color-light-light: $color-grey-light;
+$color-light-main: $color-grey-main;
+
+$color-dark-light: $color-black-light;
+$color-dark: $color-black;
+$color-dark-smoked: $color-black-smoked;
+
+$color-assertive-main: $color-red;
+
+// Size
+$size-mobile: 375px;

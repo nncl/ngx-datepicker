@@ -124,6 +124,41 @@
           }
         }
       }
+    },
+    "ngxdatepicker": {
+      "projectType": "library",
+      "root": "projects/ngxdatepicker",
+      "sourceRoot": "projects/ngxdatepicker/src",
+      "prefix": "dd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngxdatepicker/tsconfig.lib.json",
+            "project": "projects/ngxdatepicker/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngxdatepicker/src/test.ts",
+            "tsConfig": "projects/ngxdatepicker/tsconfig.spec.json",
+            "karmaConfig": "projects/ngxdatepicker/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngxdatepicker/tsconfig.lib.json",
+              "projects/ngxdatepicker/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-datepicker"
 }

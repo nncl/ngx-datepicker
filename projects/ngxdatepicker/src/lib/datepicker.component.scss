@@ -1,5 +1,20 @@
-@import "~src/scss/base/variables";
-@import "~src/scss/base/functions";
+@import "../lib/scss/base/variables";
+@import "../lib/scss/base/functions";
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+button {
+  -webkit-appearance: none;
+  border: 0;
+  background-color: transparent;
+}
 
 .assertive,
 .disabled {

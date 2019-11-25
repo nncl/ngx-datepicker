@@ -1,14 +1,55 @@
+import * as moment_ from 'moment';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import * as moment from 'moment';
-import { IDay } from '../../../interfaces/day/day';
 import { Moment } from 'moment';
+import { IDay } from '../interfaces/day/day';
+
+const moment = moment_;
 
 @Component({
-  selector: 'app-datepicker',
-  templateUrl: './datepicker.component.html',
+  selector: 'dd-ngxdatepicker',
+  template: `
+    <div class="datepicker">
+      <div class="datepicker__close">
+        <button type="button">Fechar</button>
+      </div>
+
+      <div class="datepicker__content">
+        <header class="datepicker__header">
+          <button type="button" class="previous" (click)="toggle(false)">
+            {{previous}}
+          </button>
+
+          <strong class="current">
+            {{current.format('MMMM')}}
+          </strong>
+
+          <button type="button" class="next" (click)="toggle(true)">
+            {{next}}
+          </button>
+        </header>
+
+        <div class="datepicker__weeks">
+          <div class="datepicker__week" *ngFor="let week of weeks">
+            <strong>{{week.weekday | weekday}}</strong>
+            <ul class="datepicker__days">
+              <li *ngFor="let date of week.days"
+                  [ngClass]="{'disabled' : date.disabled}"
+                  (click)="dateClicked.emit(date.day)">
+                {{date.day | date : 'd'}}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="datepicker__footer">
+          <button>Selecionar</button>
+        </footer>
+      </div>
+    </div>
+  `,
   styleUrls: ['./datepicker.component.scss']
 })
-export class DatepickerComponent implements OnInit {
+export class NgxdatepickerComponent implements OnInit {
   @Output() dateClicked = new EventEmitter<string>();
   weeks: any[] = Array.from(Array(7).keys(), n => {
     return {weekday: n, days: []};
@@ -77,4 +118,5 @@ export class DatepickerComponent implements OnInit {
     this.current = date;
     this.updatePrevNext();
   }
+
 }
