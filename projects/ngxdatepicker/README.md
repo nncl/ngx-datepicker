@@ -4,6 +4,12 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Getting Started
 
+Install through npm:
+
+```
+npm i @clmeida/ngxdatepicker
+```
+
 Include its module in your `app.module.ts` file:
 
 ```
