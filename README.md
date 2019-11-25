@@ -1,6 +1,8 @@
 # Ngxdatepicker
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+[![npm](https://img.shields.io/npm/v/@clmeida/ngxdatepicker.svg)](https://www.npmjs.com/package/@clmeida/ngxdatepicker)
+
+Custom Datepicker for Angular 8+ applications.
 
 ## Getting Started
 
@@ -14,29 +16,23 @@ Include its module in your `app.module.ts` file:
 
 ```
 @NgModule({
-  declarations: [
-    ...
-  ],
   imports: [
-    ...
     NgxdatepickerModule
-  ],
-  providers: [],
-  exports: [
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }
 ```
 
-Add the component:
+Add the component in your application:
 
-```
+```angular2html
 <dd-ngxdatepicker (dateClicked)="myComponentVariable = $event"></dd-ngxdatepicker>
 ```
 
-## Events:
+## API
 
-| Name   | Default  | Type  | Description  |
-|---|---|---|---|
-| dateClicked  |  -  | string  | Returns a string when a day is clicked
+### Outputs
+
+| Name   | Description  |
+|---|---|
+| (dateClicked)  | Outputs a string when a day is clicked
