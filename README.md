@@ -4,17 +4,21 @@
 
 Custom Datepicker for Angular 8+ applications.
 
+[Demo](https://angular-pygnrr.stackblitz.io/).
+
 ## Getting Started
 
 Install through npm:
 
 ```
-npm i @clmeida/ngxdatepicker
+npm i @clmeida/ngxdatepicker --save
 ```
 
 Include its module in your `app.module.ts` file:
 
 ```
+import { NgxdatepickerModule } from '@clmeida/ngxdatepicker';
+
 @NgModule({
   imports: [
     NgxdatepickerModule
