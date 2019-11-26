@@ -4,7 +4,7 @@
 
 Custom Datepicker for Angular 8+ applications.
 
-[Demo](https://angular-pygnrr.stackblitz.io/).
+[Demo](https://ngxdatepicker.stackblitz.io/).
 
 ## Getting Started
 
