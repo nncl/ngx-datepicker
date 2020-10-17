@@ -27,7 +27,7 @@ button {
 }
 
 .disabled {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .selected {
@@ -35,7 +35,7 @@ button {
   color: $color-light-main;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     top: 50%;
