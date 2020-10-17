@@ -4,7 +4,7 @@
 
 Custom Datepicker for Angular 8+ applications.
 
-[Demo](https://ngxdatepicker.stackblitz.io/).
+[Demo](https://ngxdatepicker.surge.sh/).
 
 ## Getting Started
 
