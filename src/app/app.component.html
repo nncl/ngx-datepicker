@@ -2,8 +2,14 @@
 
 <h2>Click</h2>
 
+<button type="button" (click)="datepicker?.goPrev()">Go Prev</button>
+<button type="button" (click)="datepicker?.goNext()">Go Next</button>
+
 <div class="container">
-  <dd-ngxdatepicker (dateClicked)="date = $event"></dd-ngxdatepicker>
+  <dd-ngxdatepicker
+    #datepicker
+    (dateClicked)="date = $event"
+  ></dd-ngxdatepicker>
 
   <div class="container-info">
     <div>
@@ -15,8 +21,14 @@
 
 <h2>Forms</h2>
 
+<button type="button" (click)="datepicker2?.goPrev()">Go Prev</button>
+<button type="button" (click)="datepicker2?.goNext()">Go Next</button>
 <div class="container">
-  <dd-ngxdatepicker name="model" [(ngModel)]="model"></dd-ngxdatepicker>
+  <dd-ngxdatepicker
+    #datepicker2
+    name="model"
+    [(ngModel)]="model"
+  ></dd-ngxdatepicker>
 
   <div class="container-info">
     <div>

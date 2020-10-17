@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import * as moment from "moment";
 
 @Component({
@@ -7,6 +7,9 @@ import * as moment from "moment";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
+  @ViewChild("datepicker") datepicker: any;
+  @ViewChild("datepicker2") datepicker2: any;
+
   date: string;
   model: any = moment("29/11/2020", "DD/MM/YYYY").format();
 
