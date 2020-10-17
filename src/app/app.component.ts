@@ -8,8 +8,8 @@ import * as moment from "moment";
 })
 export class AppComponent {
   date: string;
-  model: any;
+  model: any = moment("29/11/2020", "DD/MM/YYYY").format();
 
   date2: string;
-  model2: any = moment("29/11/2020", "DD/MM/YYYY").format();
+  model2: any = moment("25/12/2020", "DD/MM/YYYY").format();
 }
