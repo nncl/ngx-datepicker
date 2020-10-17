@@ -3,5 +3,9 @@
   "dest": "../../dist/ngxdatepicker",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "moment"
+  ]
 }

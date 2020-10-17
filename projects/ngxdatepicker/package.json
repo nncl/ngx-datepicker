@@ -1,6 +1,6 @@
 {
   "name": "@clmeida/ngxdatepicker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/nncl/ngx-datepicker"
@@ -11,7 +11,8 @@
     "url": "https://github.com/nncl"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "moment": "^2.24.0"
   },
   "peerDependencies": {
     "@angular/common": "^8.2.14",
