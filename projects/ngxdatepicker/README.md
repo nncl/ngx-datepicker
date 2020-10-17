@@ -1,8 +1,8 @@
 # Ngxdatepicker
 
-[![npm](https://img.shields.io/npm/v/@clmeida/ngxdatepicker.svg)](https://www.npmjs.com/package/@clmeida/ngxdatepicker)
-
 Custom Datepicker for Angular 8+ applications.
+
+[![npm](https://img.shields.io/npm/v/@clmeida/ngxdatepicker.svg)](https://www.npmjs.com/package/@clmeida/ngxdatepicker)
 
 [Demo](https://ngxdatepicker.surge.sh/).
 
