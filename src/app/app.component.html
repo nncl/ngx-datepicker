@@ -2,9 +2,6 @@
 
 <h2>Click</h2>
 
-<button type="button" (click)="datepicker?.goPrev()">Go Prev</button>
-<button type="button" (click)="datepicker?.goNext()">Go Next</button>
-
 <div class="container">
   <dd-ngxdatepicker
     #datepicker
@@ -16,13 +13,14 @@
       <h3>(dateClicked)</h3>
       <h4>{{ date }}</h4>
     </div>
+
+    <button type="button" (click)="datepicker?.goPrev()">Custom Prev</button>
+    <button type="button" (click)="datepicker?.goNext()">Custom Next</button>
   </div>
 </div>
 
 <h2>Forms</h2>
 
-<button type="button" (click)="datepicker2?.goPrev()">Go Prev</button>
-<button type="button" (click)="datepicker2?.goNext()">Go Next</button>
 <div class="container">
   <dd-ngxdatepicker
     #datepicker2
@@ -35,6 +33,9 @@
       <h3>[(ngModel)]</h3>
       <h4>{{ model }}</h4>
     </div>
+
+    <button type="button" (click)="datepicker2?.goPrev()">Custom Prev</button>
+    <button type="button" (click)="datepicker2?.goNext()">Custom Next</button>
   </div>
 </div>
 

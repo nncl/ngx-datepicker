@@ -3,6 +3,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+  outline: none;
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   margin: 0 0 30px;
@@ -20,6 +25,15 @@ body {
 
   @media screen and (min-width: 768px) {
     margin-top: 0;
+  }
+
+  button {
+    border-radius: 50px;
+    border: 2px solid #1f65ff;
+    background: #1f65ff;
+    padding: 5px 10px;
+    color: #fff;
+    margin: 0 2px;
   }
 }
 
