@@ -136,7 +136,7 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    // this.updatePrevNext(); // FIXME
+    this.updatePrevNext();
   }
 
   buildMonth() {
