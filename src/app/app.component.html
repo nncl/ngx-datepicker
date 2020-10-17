@@ -60,3 +60,33 @@
     </div>
   </div>
 </div>
+
+<h2>Slots</h2>
+
+<div class="container">
+  <dd-ngxdatepicker
+    #datepicker3
+    name="model3"
+    [(ngModel)]="model3"
+    (dateClicked)="date3 = $event"
+  >
+    <button type="button" (click)="datepicker3?.goPrev()" prev>
+      Custom Prev
+    </button>
+    <button type="button" (click)="datepicker3?.goNext()" next>
+      Custom Next
+    </button></dd-ngxdatepicker
+  >
+
+  <div class="container-info">
+    <div>
+      <h3>[(dateClicked)]</h3>
+      <h4>{{ date3 }}</h4>
+    </div>
+
+    <div>
+      <h3>[(ngModel)]</h3>
+      <h4>{{ model3 }}</h4>
+    </div>
+  </div>
+</div>

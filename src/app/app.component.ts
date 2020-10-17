@@ -15,4 +15,7 @@ export class AppComponent {
 
   date2: string;
   model2: any = moment("25/12/2020", "DD/MM/YYYY").format();
+
+  date3: string;
+  model3: any = moment("25/12/2020", "DD/MM/YYYY").format();
 }
