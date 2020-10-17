@@ -95,3 +95,7 @@ export class AppComponent {
 ### Style
 
 Every time you select a day a class named `selected` is bound to that element.
+
+### License
+
+[MIT](https://github.com/nncl/ngx-datepicker/blob/master/LICENSE)
