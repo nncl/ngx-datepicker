@@ -22,17 +22,35 @@ const moment = moment_;
 
       <div class="datepicker__content">
         <header class="datepicker__header">
-          <button type="button" class="previous" (click)="toggle(false)">
+          <button
+            *ngIf="!prevSlot.innerHTML.trim()"
+            type="button"
+            class="previous"
+            (click)="toggle(false)"
+          >
             {{ previous }}
           </button>
+
+          <div #prevSlot>
+            <ng-content select="[prev]"></ng-content>
+          </div>
 
           <strong class="current">
             {{ current.format("MMMM") }}
           </strong>
 
-          <button type="button" class="next" (click)="toggle(true)">
+          <button
+            *ngIf="!nextSlot.innerHTML.trim()"
+            type="button"
+            class="next"
+            (click)="toggle(true)"
+          >
             {{ next }}
           </button>
+
+          <div #nextSlot>
+            <ng-content select="[next]"></ng-content>
+          </div>
         </header>
 
         <div class="datepicker__weeks">
