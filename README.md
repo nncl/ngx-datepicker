@@ -16,27 +16,35 @@ npm i @clmeida/ngxdatepicker --save
 
 Include its module in your `app.module.ts` file:
 
-```
-import { NgxdatepickerModule } from '@clmeida/ngxdatepicker';
+```typescript
+import { NgxdatepickerModule } from "@clmeida/ngxdatepicker";
 
 @NgModule({
-  imports: [
-    NgxdatepickerModule
-  ]
+  imports: [NgxdatepickerModule],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Add the component in your application:
 
-```angular2html
-<dd-ngxdatepicker (dateClicked)="myComponentVariable = $event"></dd-ngxdatepicker>
+```html
+<dd-ngxdatepicker
+  (dateClicked)="myComponentVariable = $event"
+  name="date"
+  [(ngModel)]="date"
+></dd-ngxdatepicker>
 ```
+
+It's not required to use both `dateClicked` and `ngModel` together, you can use either one of them.
 
 ## API
 
-### Outputs
+### Events
 
-| Name   | Description  |
-|---|---|
-| (dateClicked)  | Outputs a string when a day is clicked
+| Name          | Description                            |
+| ------------- | -------------------------------------- |
+| (dateClicked) | Outputs a string when a day is clicked |
+
+### Style
+
+Every time you select a day a class named `selected` is binded to that element.
