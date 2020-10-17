@@ -41,6 +41,6 @@ Add the component in your application:
 | ------------- | -------------------------------------- |
 | (dateClicked) | Outputs a string when a day is clicked |
 
-### Custom class
+### Stylization
 
 Every time you select a day a class named `selected` is binded to that element.
