@@ -56,9 +56,11 @@ It's not required to use both `dateClicked` and `ngModel` together, you can use 
 
 ```typescript
 import { ViewChild } from "@angular/core";
+import * as moment from "moment";
 
 export class AppComponent {
   @ViewChild("datepicker") datepicker: any;
+  date: any = moment("25/12/2020", "DD/MM/YYYY").format();
 }
 ```
 
