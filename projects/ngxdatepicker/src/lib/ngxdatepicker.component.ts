@@ -195,6 +195,10 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
     this.updatePrevNext();
   }
 
+  goPrev = () => this.toggle(false);
+
+  goNext = () => this.toggle(true);
+
   /**
    * @description
    * Emit a value and add selected class to the current day
