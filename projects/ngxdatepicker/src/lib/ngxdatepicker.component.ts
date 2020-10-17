@@ -1,7 +1,14 @@
 import * as moment_ from "moment";
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  OnInit,
+  Output,
+} from "@angular/core";
 import { Moment } from "moment";
 import { IDay } from "../interfaces/day/day";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 const moment = moment_;
 
@@ -50,8 +57,15 @@ const moment = moment_;
     </div>
   `,
   styleUrls: ["./datepicker.component.scss"],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NgxdatepickerComponent),
+      multi: true,
+    },
+  ],
 })
-export class NgxdatepickerComponent implements OnInit {
+export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
   @Output() dateClicked = new EventEmitter<string>();
   weeks: any[] = Array.from(Array(7).keys(), (n) => {
     return { weekday: n, days: [] };
@@ -60,9 +74,58 @@ export class NgxdatepickerComponent implements OnInit {
   previous: any;
   next: any;
   selected: IDay;
+  val = "";
 
   constructor() {
     this.current = moment();
+  }
+
+  onChange: any = (a, b) => {};
+
+  onTouch: any = () => {};
+
+  get value() {
+    return this.val;
+  }
+
+  set value(val) {
+    if (val !== undefined && this.val !== val) {
+      this.val = val;
+      this.onChange(val);
+      this.onTouch(val);
+
+      if (this.value) {
+        const day = moment(new Date(this.value)).startOf("day");
+
+        this.current = moment(new Date(this.value));
+
+        this.selected = {
+          day: day.format(),
+          weekday: parseInt(day.format("d"), 10),
+          disabled: null,
+          selected: true,
+        };
+
+        this.select(this.selected);
+      }
+
+      this.updatePrevNext();
+    }
+  }
+
+  // this method sets the value programmatically
+  writeValue(value: any) {
+    this.value = value;
+  }
+
+  // upon UI element value changes, this method gets triggered
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  // upon touching the element, this method gets triggered
+  registerOnTouched(fn: any) {
+    this.onTouch = fn;
   }
 
   updatePrevNext() {
@@ -73,7 +136,7 @@ export class NgxdatepickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updatePrevNext();
+    // this.updatePrevNext(); // FIXME
   }
 
   buildMonth() {
@@ -102,7 +165,7 @@ export class NgxdatepickerComponent implements OnInit {
         day: day.format(),
         weekday: parseInt(day.format("d"), 10),
         disabled: !(currentMonth === day.format("M")),
-        selected: false,
+        selected: day.format() === this.selected?.day,
       };
 
       days.push(obj);
@@ -134,20 +197,24 @@ export class NgxdatepickerComponent implements OnInit {
 
   /**
    * @description
-   * Emit a value and add selected class to current day
+   * Emit a value and add selected class to the current day
    *
    * @param date Current clicked day
    */
   select(date: IDay) {
     this.selected = { ...date, selected: true };
     this.dateClicked.emit(date.day);
+    this.writeValue(date.day);
+    this.addClass();
+  }
 
+  addClass() {
     // Set selected class
     this.weeks = this.weeks.map((week) => {
       week.days = week.days.map((dayItem) => {
         return {
           ...dayItem,
-          selected: dayItem.day === this.selected.day,
+          selected: dayItem.day === this.selected?.day,
         };
       });
 
