@@ -1,3 +1,43 @@
-<dd-ngxdatepicker (dateClicked)="date = $event"></dd-ngxdatepicker>
+<h1>Ngx Datepicker</h1>
 
-Date: {{date}}
+<h2>Without initial value</h2>
+
+<div class="container">
+  <dd-ngxdatepicker
+    (dateClicked)="date = $event"
+    name="model"
+    [(ngModel)]="model"
+  ></dd-ngxdatepicker>
+
+  <div class="container-info">
+    <div>
+      <h3>(dateClicked)</h3>
+      <h4>{{ date }}</h4>
+    </div>
+
+    <div>
+      <h3>[(ngModel)]</h3>
+      <h4>{{ model }}</h4>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <dd-ngxdatepicker
+    (dateClicked)="date2 = $event"
+    name="model2"
+    [(ngModel)]="model2"
+  ></dd-ngxdatepicker>
+
+  <div class="container-info">
+    <div>
+      <h3>(dateClicked)</h3>
+      <h4>{{ date2 }}</h4>
+    </div>
+
+    <div>
+      <h3>[(ngModel)]</h3>
+      <h4>{{ model2 }}</h4>
+    </div>
+  </div>
+</div>
