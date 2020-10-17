@@ -35,8 +35,12 @@ Add the component in your application:
 
 ## API
 
-### Outputs
+### Events
 
-| Name   | Description  |
-|---|---|
-| (dateClicked)  | Outputs a string when a day is clicked
+| Name          | Description                            |
+| ------------- | -------------------------------------- |
+| (dateClicked) | Outputs a string when a day is clicked |
+
+### Custom class
+
+Every time you select a day a class named `selected` is binded to that element.
