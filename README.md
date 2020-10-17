@@ -45,6 +45,35 @@ It's not required to use both `dateClicked` and `ngModel` together, you can use 
 | ------------- | -------------------------------------- |
 | (dateClicked) | Outputs a string when a day is clicked |
 
+### Methods
+
+| Name   | Description                    |
+| ------ | ------------------------------ |
+| goPrev | Goes back to earlier month     |
+| goNext | Goes forward to the next month |
+
+#### Example
+
+```typescript
+import { ViewChild } from "@angular/core";
+
+export class AppComponent {
+  @ViewChild("datepicker") datepicker: any;
+}
+```
+
+```html
+<dd-ngxdatepicker #datepicker name="date" [(ngModel)]="date"></dd-ngxdatepicker>
+
+<button type="button" (click)="datepicker?.goPrev()">
+  My custom prev Button
+</button>
+
+<button type="button" (click)="datepicker?.goNext()">
+  My custom next Button
+</button>
+```
+
 ### Style
 
-Every time you select a day a class named `selected` is binded to that element.
+Every time you select a day a class named `selected` is bound to that element.
