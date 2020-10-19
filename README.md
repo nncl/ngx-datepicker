@@ -96,6 +96,19 @@ export class AppComponent {
 
 Every time you select a day a class named `selected` is bound to that element.
 
+### I18n
+
+Since this module works with [**moment.js**](https://momentjs.com/) you can set up its locale globally in your application:
+
+**app.module.ts**
+
+```typescript
+// ... imports
+import * as moment from "moment";
+
+moment.locale("pt-BR");
+```
+
 ### License
 
 [MIT](https://github.com/nncl/ngx-datepicker/blob/master/LICENSE)
