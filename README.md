@@ -78,11 +78,11 @@ export class AppComponent {
 
 ### Slots
 
-| Name | Description                                   |
-| ---- | --------------------------------------------- |
-| prev | Replace default prev button with a custom one |
-| next | Replace default next button with a custom one |
-| next | Replace default month title with a custom one |
+| Name  | Description                                   |
+| ----- | --------------------------------------------- |
+| prev  | Replace default prev button with a custom one |
+| next  | Replace default next button with a custom one |
+| month | Replace default month title with a custom one |
 
 #### Example
 
