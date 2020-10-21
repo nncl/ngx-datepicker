@@ -31,9 +31,13 @@ const moment = moment_;
             <ng-content select="[prev]"></ng-content>
           </div>
 
-          <strong class="current">
+          <strong *ngIf="!month.innerHTML.trim()" class="current">
             {{ current.format("MMMM") }}
           </strong>
+
+          <div #month>
+            <ng-content select="[month]"></ng-content>
+          </div>
 
           <button
             *ngIf="!nextSlot.innerHTML.trim()"
