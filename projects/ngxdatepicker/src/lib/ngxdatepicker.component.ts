@@ -16,10 +16,6 @@ const moment = moment_;
   selector: "dd-ngxdatepicker",
   template: `
     <div class="datepicker">
-      <div class="datepicker__close">
-        <button type="button">Fechar</button>
-      </div>
-
       <div class="datepicker__content">
         <header class="datepicker__header">
           <button
@@ -67,10 +63,6 @@ const moment = moment_;
             </ul>
           </div>
         </div>
-
-        <footer class="datepicker__footer">
-          <button>Selecionar</button>
-        </footer>
       </div>
     </div>
   `,
