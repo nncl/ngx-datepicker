@@ -100,10 +100,11 @@ button {
   }
 
   &__weeks {
-    margin: calculateRem(18px) 0 calculateRem(25px);
+    margin: calculateRem(18px) 0 0;
 
     @media screen and (min-width: $size-mobile + 1) {
       margin-top: calculateRem(18px);
+      margin-bottom: calculateRem(25px);
     }
   }
 

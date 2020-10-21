@@ -75,8 +75,9 @@
     </button>
     <button type="button" (click)="datepicker3?.goNext()" next>
       Custom Next
-    </button></dd-ngxdatepicker
-  >
+    </button>
+    <strong month>{{ datepicker3.current | date: "MM yyyy" }}</strong>
+  </dd-ngxdatepicker>
 
   <div class="container-info">
     <div>

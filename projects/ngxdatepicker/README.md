@@ -78,10 +78,11 @@ export class AppComponent {
 
 ### Slots
 
-| Name | Description                                   |
-| ---- | --------------------------------------------- |
-| prev | Replace default prev button with a custom one |
-| next | Replace default next button with a custom one |
+| Name  | Description                                   |
+| ----- | --------------------------------------------- |
+| prev  | Replace default prev button with a custom one |
+| next  | Replace default next button with a custom one |
+| month | Replace default month title with a custom one |
 
 #### Example
 
@@ -89,6 +90,7 @@ export class AppComponent {
 <dd-ngxdatepicker #datepicker name="date" [(ngModel)]="date">
   <button type="button" (click)="datepicker?.goPrev()" prev>Custom Prev</button>
   <button type="button" (click)="datepicker?.goNext()" next>Custom Next</button>
+  <strong month>{{ datepicker.current | date: "MM yyyy" }}</strong>
 </dd-ngxdatepicker>
 ```
 

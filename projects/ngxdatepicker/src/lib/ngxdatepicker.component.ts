@@ -16,10 +16,6 @@ const moment = moment_;
   selector: "dd-ngxdatepicker",
   template: `
     <div class="datepicker">
-      <div class="datepicker__close">
-        <button type="button">Fechar</button>
-      </div>
-
       <div class="datepicker__content">
         <header class="datepicker__header">
           <button
@@ -35,9 +31,13 @@ const moment = moment_;
             <ng-content select="[prev]"></ng-content>
           </div>
 
-          <strong class="current">
+          <strong *ngIf="!month.innerHTML.trim()" class="current">
             {{ current.format("MMMM") }}
           </strong>
+
+          <div #month>
+            <ng-content select="[month]"></ng-content>
+          </div>
 
           <button
             *ngIf="!nextSlot.innerHTML.trim()"
@@ -67,10 +67,6 @@ const moment = moment_;
             </ul>
           </div>
         </div>
-
-        <footer class="datepicker__footer">
-          <button>Selecionar</button>
-        </footer>
       </div>
     </div>
   `,
