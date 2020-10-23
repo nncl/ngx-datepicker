@@ -1,19 +1,20 @@
-import * as moment_ from "moment";
+import * as moment_ from 'moment';
 import {
   Component,
   EventEmitter,
   forwardRef,
+  Input,
   OnInit,
   Output,
-} from "@angular/core";
-import { Moment } from "moment";
-import { IDay } from "../interfaces/day/day";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+} from '@angular/core';
+import { Moment } from 'moment';
+import { IDay } from '../interfaces/day/day';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const moment = moment_;
 
 @Component({
-  selector: "dd-ngxdatepicker",
+  selector: 'dd-ngxdatepicker',
   template: `
     <div class="datepicker">
       <div class="datepicker__content">
@@ -70,7 +71,7 @@ const moment = moment_;
       </div>
     </div>
   `,
-  styleUrls: ["./datepicker.component.scss"],
+  styleUrls: ['./datepicker.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -81,6 +82,8 @@ const moment = moment_;
 })
 export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
   @Output() dateClicked = new EventEmitter<string>();
+  @Input() invalidDates: string[] = [];
+  @Input() disablePrevDates;
   weeks: any[] = Array.from(Array(7).keys(), (n) => {
     return { weekday: n, days: [] };
   });
@@ -88,15 +91,17 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
   previous: any;
   next: any;
   selected: IDay;
-  val = "";
+  val = '';
 
   constructor() {
     this.current = moment();
   }
 
-  onChange: any = (a, b) => {};
+  onChange: any = (a, b) => {
+  };
 
-  onTouch: any = () => {};
+  onTouch: any = () => {
+  };
 
   get value() {
     return this.val;
@@ -109,13 +114,13 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
       this.onTouch(val);
 
       if (this.value) {
-        const day = moment(new Date(this.value)).startOf("day");
+        const day = moment(new Date(this.value)).startOf('day');
 
         this.current = moment(new Date(this.value));
 
         this.selected = {
           day: day.format(),
-          weekday: parseInt(day.format("d"), 10),
+          weekday: parseInt(day.format('d'), 10),
           disabled: null,
           selected: true,
         };
@@ -144,8 +149,8 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
 
   updatePrevNext() {
     const date = moment(this.current.format());
-    this.previous = date.subtract(1, "month").format("MMMM");
-    this.next = date.add(2, "month").format("MMMM");
+    this.previous = date.subtract(1, 'month').format('MMMM');
+    this.next = date.add(2, 'month').format('MMMM');
     this.buildMonth();
   }
 
@@ -155,35 +160,54 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
 
   buildMonth() {
     const days: IDay[] = [];
-    const date = moment(this.current, "MMMM");
-    const startOfMonth = moment(date.startOf("month"));
-    const endOfMonth = moment(date.endOf("month"));
-    const currentMonth = endOfMonth.format("M");
+    const date = moment(this.current, 'MMMM');
+    const startOfMonth = moment(date.startOf('month'));
+    const endOfMonth = moment(date.endOf('month'));
+    const currentMonth = endOfMonth.format('M');
     const day = startOfMonth;
 
     // Check if startOfMonth's weekday starts on 0, if not, update it to the first
     // earlier date which starts with 0
-    const startOfMonthWeekday = parseInt(startOfMonth.format("d"), 10);
+    const startOfMonthWeekday = parseInt(startOfMonth.format('d'), 10);
     Array.from(Array(startOfMonthWeekday).keys()).map(() =>
-      startOfMonth.subtract(1, "day")
+      startOfMonth.subtract(1, 'day')
     );
 
     // Same with endOfMonth ending on a 6
-    const endOfMonthWeekday = parseInt(endOfMonth.format("d"), 10);
+    const endOfMonthWeekday = parseInt(endOfMonth.format('d'), 10);
     Array.from(Array(6 - endOfMonthWeekday).keys()).map(() =>
-      endOfMonth.add(1, "day")
+      endOfMonth.add(1, 'day')
     );
 
     while (startOfMonth <= endOfMonth) {
       const obj: IDay = {
         day: day.format(),
-        weekday: parseInt(day.format("d"), 10),
-        disabled: !(currentMonth === day.format("M")),
+        weekday: parseInt(day.format('d'), 10),
+        disabled: !(currentMonth === day.format('M')),
         selected: day.format() === this.selected?.day,
       };
 
+      // Verify if this day in within invalidDates array
+      if (this.invalidDates.length) {
+        let hasFoundEqual = false;
+
+        for (let i = 0; i < this.invalidDates.length && !hasFoundEqual; i++) {
+          hasFoundEqual = day.isSame(this.invalidDates[i], 'day');
+        }
+
+        if (hasFoundEqual) {
+          obj.disabled = true;
+        } else if (this.disablePrevDates) {
+          obj.disabled = day.isBefore(moment().startOf('day').format());
+        }
+      }
+
+      if (this.disablePrevDates && !this.invalidDates.length) {
+        obj.disabled = day.isBefore(moment().startOf('day').format());
+      }
+
       days.push(obj);
-      day.add(1, "day");
+      day.add(1, 'day');
     }
 
     this.matchDays(days);
@@ -203,8 +227,8 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
    * @param add Either add or subtract a month
    */
   toggle(add: boolean) {
-    const date = moment(this.current, "MMMM");
-    add ? date.add(1, "month") : date.subtract(1, "month");
+    const date = moment(this.current, 'MMMM');
+    add ? date.add(1, 'month') : date.subtract(1, 'month');
     this.current = date;
     this.updatePrevNext();
   }

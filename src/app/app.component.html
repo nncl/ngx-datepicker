@@ -91,3 +91,32 @@
     </div>
   </div>
 </div>
+
+<h2>Invalid dates</h2>
+<p>Tomorrow and one month from now are invalids, also <strong>previous days</strong> as set via <i>disablePrevDates</i>
+  property.</p>
+
+<pre>{{invalidDates | json}}</pre>
+
+<div class="container">
+  <dd-ngxdatepicker
+    name="model4"
+    [(ngModel)]="model4"
+    (dateClicked)="date4 = $event"
+    [invalidDates]="invalidDates"
+    [disablePrevDates]="true"
+  >
+  </dd-ngxdatepicker>
+
+  <div class="container-info">
+    <div>
+      <h3>[(dateClicked)]</h3>
+      <h4>{{ date4 }}</h4>
+    </div>
+
+    <div>
+      <h3>[(ngModel)]</h3>
+      <h4>{{ model4 }}</h4>
+    </div>
+  </div>
+</div>
