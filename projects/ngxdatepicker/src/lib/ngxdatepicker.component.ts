@@ -13,12 +13,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const moment = moment_;
 
-/**
- * TODO
- * Add array property with invalidDates - then the component will add the disabled class to its parent
- * Add boolean property that tells if old dates need to be disabled as well.
- */
-
 @Component({
   selector: 'dd-ngxdatepicker',
   template: `
@@ -89,6 +83,7 @@ const moment = moment_;
 export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
   @Output() dateClicked = new EventEmitter<string>();
   @Input() invalidDates: string[] = [];
+  @Input() disablePrevDates;
   weeks: any[] = Array.from(Array(7).keys(), (n) => {
     return { weekday: n, days: [] };
   });
@@ -202,7 +197,13 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
 
         if (hasFoundEqual) {
           obj.disabled = true;
+        } else if (this.disablePrevDates) {
+          obj.disabled = day.isBefore(moment().startOf('day').format());
         }
+      }
+
+      if (this.disablePrevDates && !this.invalidDates.length) {
+        obj.disabled = day.isBefore(moment().startOf('day').format());
       }
 
       days.push(obj);
