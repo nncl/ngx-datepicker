@@ -1,9 +1,9 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from "./app.component";
-import { FormsModule } from "@angular/forms";
-import { NgxdatepickerModule } from "ngxdatepicker";
+import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { NgxdatepickerModule } from 'ngxdatepicker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,4 +12,5 @@ import { NgxdatepickerModule } from "ngxdatepicker";
   exports: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
