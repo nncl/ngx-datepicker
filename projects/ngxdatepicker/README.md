@@ -39,6 +39,41 @@ It's not required to use both `dateClicked` and `ngModel` together, you can use 
 
 ## API
 
+### Properties
+
+| Name          | Type                            | Description
+| ------------- | -------------------------------------- | ---
+| invalidDates | Array[string] | Invalid dates as timestamps
+| disablePrevDates | Boolean | Disable previous dates by today
+
+#### Example
+
+```typescript
+import { ViewChild } from "@angular/core";
+import * as moment from "moment";
+
+export class AppComponent implements OnInit {
+    invalidDates: string[] = [];
+
+    ngOnInit() {
+        const tomorrow = moment().add(1, 'days').format();
+        const someDayOfNextMonth = moment().add(1, 'month').format();
+        this.invalidDates.push(tomorrow);
+        this.invalidDates.push(someDayOfNextMonth);
+    }
+
+}
+```
+
+```html
+<dd-ngxdatepicker #datepicker 
+    name="date" 
+    [(ngModel)]="date" 
+    [invalidDates]="invalidDates"
+    [disablePrevDates]="true">
+</dd-ngxdatepicker>
+```
+
 ### Events
 
 | Name          | Description                            |
