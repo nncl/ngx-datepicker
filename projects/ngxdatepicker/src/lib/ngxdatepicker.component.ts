@@ -198,12 +198,12 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
         if (hasFoundEqual) {
           obj.disabled = true;
         } else if (this.disablePrevDates) {
-          obj.disabled = day.isBefore(moment().startOf('day').format());
+          obj.disabled = day.isBefore(moment().startOf('day').format()) || !(currentMonth === day.format('M'));
         }
       }
 
       if (this.disablePrevDates && !this.invalidDates.length) {
-        obj.disabled = day.isBefore(moment().startOf('day').format());
+        obj.disabled = day.isBefore(moment().startOf('day').format()) || !(currentMonth === day.format('M'));
       }
 
       days.push(obj);
