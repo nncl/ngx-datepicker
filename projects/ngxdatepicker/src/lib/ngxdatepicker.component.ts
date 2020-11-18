@@ -221,7 +221,11 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnC
           hasFoundEqual = day.isSame(this.validDates[i], 'day');
         }
 
-        obj.disabled = !hasFoundEqual;
+        if (hasFoundEqual) {
+          obj.disabled = day.isBefore(moment().startOf('day').format()) || !(currentMonth === day.format('M'));
+        } else {
+          obj.disabled = true;
+        }
       }
 
       days.push(obj);
