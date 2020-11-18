@@ -36,10 +36,12 @@ export class AppComponent implements OnInit {
     const today = moment().format();
     const oneMonthFromNow = moment().add(1, 'months').format();
     const oneMonthFromNowPlusOneDay = moment().add(1, 'months').add(1, 'days').format();
+    const firstDayOfNextMonth = moment().add(1, 'months').startOf('month').format();
 
     this.validDates = [
       today,
       tomorrow,
+      firstDayOfNextMonth,
       oneMonthFromNow,
       oneMonthFromNowPlusOneDay
     ];
