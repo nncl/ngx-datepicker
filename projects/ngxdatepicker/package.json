@@ -1,6 +1,6 @@
 {
   "name": "@clmeida/ngxdatepicker",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/nncl/ngx-datepicker"
@@ -19,6 +19,10 @@
     "@angular/core": "^8.2.14",
     "moment": "^2.24.0"
   },
-  "keywords": ["datepicker", "ngxdatepicker", "angular"],
+  "keywords": [
+    "datepicker",
+    "ngxdatepicker",
+    "angular"
+  ],
   "license": "MIT"
 }
