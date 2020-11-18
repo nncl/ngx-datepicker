@@ -120,3 +120,33 @@
     </div>
   </div>
 </div>
+
+<h2>Valid dates</h2>
+
+<p>
+  Today, tomorrow and the same to the next month are valid, all others are disabled.
+</p>
+
+<pre>{{validDates | json}}</pre>
+
+<div class="container">
+  <dd-ngxdatepicker
+    name="model5"
+    [(ngModel)]="model5"
+    [validDates]="validDates"
+    (dateClicked)="date5 = $event"
+  >
+  </dd-ngxdatepicker>
+
+  <div class="container-info">
+    <div>
+      <h3>[(dateClicked)]</h3>
+      <h4>{{ date5 }}</h4>
+    </div>
+
+    <div>
+      <h3>[(ngModel)]</h3>
+      <h4>{{ model5 }}</h4>
+    </div>
+  </div>
+</div>

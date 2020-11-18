@@ -3,9 +3,9 @@ import {
   Component,
   EventEmitter,
   forwardRef,
-  Input,
+  Input, OnChanges,
   OnInit,
-  Output,
+  Output, SimpleChanges,
 } from '@angular/core';
 import { Moment } from 'moment';
 import { IDay } from '../interfaces/day/day';
@@ -80,9 +80,10 @@ const moment = moment_;
     },
   ],
 })
-export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
+export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnChanges {
   @Output() dateClicked = new EventEmitter<string>();
   @Input() invalidDates: string[] = [];
+  @Input() validDates: string[] = [];
   @Input() disablePrevDates;
   weeks: any[] = Array.from(Array(7).keys(), (n) => {
     return { weekday: n, days: [] };
@@ -95,6 +96,12 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
 
   constructor() {
     this.current = moment();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.validDates) {
+      this.buildMonth();
+    }
   }
 
   onChange: any = (a, b) => {
@@ -187,7 +194,7 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
         selected: day.format() === this.selected?.day,
       };
 
-      // Verify if this day in within invalidDates array
+      // Verify if this day is within invalidDates array
       if (this.invalidDates.length) {
         let hasFoundEqual = false;
 
@@ -204,6 +211,17 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor {
 
       if (this.disablePrevDates && !this.invalidDates.length) {
         obj.disabled = day.isBefore(moment().startOf('day').format()) || !(currentMonth === day.format('M'));
+      }
+
+      // Verify if this day is within validDates array
+      if (this.validDates.length) {
+        let hasFoundEqual = false;
+
+        for (let i = 0; i < this.validDates.length && !hasFoundEqual; i++) {
+          hasFoundEqual = day.isSame(this.validDates[i], 'day');
+        }
+
+        obj.disabled = !hasFoundEqual;
       }
 
       days.push(obj);
