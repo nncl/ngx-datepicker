@@ -44,6 +44,7 @@ It's not required to use both `dateClicked` and `ngModel` together, you can use 
 | Name          | Type                            | Description
 | ------------- | -------------------------------------- | ---
 | invalidDates | Array[string] | Invalid dates as timestamps
+| validDates   | Array[string] | Valid dates as timestamps
 | disablePrevDates | Boolean | Disable previous dates by today
 
 #### Example
