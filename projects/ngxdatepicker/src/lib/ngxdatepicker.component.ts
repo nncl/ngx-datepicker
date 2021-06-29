@@ -84,13 +84,19 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnC
   @Output() dateClicked = new EventEmitter<string>();
   @Input() invalidDates: string[] = [];
   @Input() validDates: string[] = [];
+  // @ts-ignore
   @Input() disablePrevDates;
+
+  // tslint:disable-next-line:no-any
   weeks: any[] = Array.from(Array(7).keys(), (n) => {
     return { weekday: n, days: [] };
   });
   current: Moment;
+  // tslint:disable-next-line:no-any
   previous: any;
+  // tslint:disable-next-line:no-any
   next: any;
+  // @ts-ignore
   selected: IDay;
   val = '';
 
@@ -104,9 +110,11 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnC
     }
   }
 
-  onChange: any = (a, b) => {
+  // tslint:disable-next-line:no-any
+  onChange: any = () => {
   };
 
+  // tslint:disable-next-line:no-any
   onTouch: any = () => {
   };
 
@@ -128,7 +136,7 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnC
         this.selected = {
           day: day.format(),
           weekday: parseInt(day.format('d'), 10),
-          disabled: null,
+          disabled: false,
           selected: true,
         };
 
@@ -140,16 +148,19 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnC
   }
 
   // this method sets the value programmatically
+  // tslint:disable-next-line:no-any
   writeValue(value: any) {
     this.value = value;
   }
 
   // upon UI element value changes, this method gets triggered
+  // tslint:disable-next-line:no-any
   registerOnChange(fn: any) {
     this.onChange = fn;
   }
 
   // upon touching the element, this method gets triggered
+  // tslint:disable-next-line:no-any
   registerOnTouched(fn: any) {
     this.onTouch = fn;
   }
@@ -235,6 +246,7 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnC
     this.matchDays(days);
   }
 
+  // tslint:disable-next-line:no-any
   matchDays(days: any[]) {
     this.weeks.map((week) => {
       week.days = days.filter((day) => week.weekday === day.weekday);
@@ -275,7 +287,8 @@ export class NgxdatepickerComponent implements OnInit, ControlValueAccessor, OnC
   addClass() {
     // Set selected class
     this.weeks = this.weeks.map((week) => {
-      week.days = week.days.map((dayItem) => {
+      // tslint:disable-next-line:no-any
+      week.days = week.days.map((dayItem: any) => {
         return {
           ...dayItem,
           selected: dayItem.day === this.selected?.day,

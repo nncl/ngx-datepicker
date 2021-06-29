@@ -12,20 +12,20 @@ export class AppComponent implements OnInit {
   invalidDates: string[] = [];
   validDates: string[] = [];
 
-  date: string;
-  model: any = moment('29/11/2020', 'DD/MM/YYYY').format();
+  date = '';
+  model = moment('29/11/2020', 'DD/MM/YYYY').format();
 
-  date2: string;
-  model2: any = moment('25/12/2020', 'DD/MM/YYYY').format();
+  date2 = '';
+  model2 = moment('25/12/2020', 'DD/MM/YYYY').format();
 
-  date3: string;
-  model3: any = moment('25/12/2020', 'DD/MM/YYYY').format();
+  date3 = '';
+  model3 = moment('25/12/2020', 'DD/MM/YYYY').format();
 
-  date4: string;
-  model4: any = moment().format();
+  date4 = '';
+  model4 = moment().format();
 
-  date5: string;
-  model5: any = moment().format();
+  date5 = '';
+  model5 = moment().format();
 
   ngOnInit() {
     const tomorrow = moment().add(1, 'days').format();
