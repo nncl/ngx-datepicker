@@ -15,8 +15,8 @@
     "moment": "^2.24.0"
   },
   "peerDependencies": {
-    "@angular/common": "^11.2.14",
-    "@angular/core": "^11.2.14",
+    "@angular/common": "~12.1.0",
+    "@angular/core": "~12.1.0",
     "moment": "^2.24.0"
   },
   "keywords": [
