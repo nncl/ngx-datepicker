@@ -135,14 +135,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/ngxdatepicker/tsconfig.lib.json",
             "project": "projects/ngxdatepicker/ng-package.json"
           },
           "configurations": {
             "production": {
               "tsConfig": "projects/ngxdatepicker/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngxdatepicker/tsconfig.lib.json"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",

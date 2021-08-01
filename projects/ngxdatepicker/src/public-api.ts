@@ -5,3 +5,4 @@
 export * from './lib/ngxdatepicker.service';
 export * from './lib/ngxdatepicker.component';
 export * from './lib/ngxdatepicker.module';
+export * from './pipes/weekday/weekday.pipe';
