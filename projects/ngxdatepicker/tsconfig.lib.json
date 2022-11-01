@@ -14,7 +14,9 @@
     "lib": [
       "dom",
       "es2018"
-    ]
+    ],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
