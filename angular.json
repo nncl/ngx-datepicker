@@ -145,7 +145,6 @@
       }
     }
   },
-  "defaultProject": "ngx-datepicker",
   "cli": {
     "analytics": false
   }
