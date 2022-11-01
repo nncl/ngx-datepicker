@@ -1,4 +1,4 @@
-import * as moment_ from 'moment';
+import moment from 'moment';
 import {
   Component,
   EventEmitter,
@@ -10,8 +10,6 @@ import {
 import { Moment } from 'moment';
 import { IDay } from '../interfaces/day/day';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-const moment = moment_;
 
 @Component({
   selector: 'dd-ngxdatepicker',
@@ -71,7 +69,7 @@ const moment = moment_;
       </div>
     </div>
   `,
-  styleUrls: ['./datepicker.component.scss'],
+  styleUrls: [ './datepicker.component.scss' ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
